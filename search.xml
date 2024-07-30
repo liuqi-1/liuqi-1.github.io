@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Git配置查看</title>
+      <link href="/article/f8634c7b.html"/>
+      <url>/article/f8634c7b.html</url>
+      
+        <content type="html"><![CDATA[<p>Git配置的三种级别</p><table><thead><tr><th>权重</th><th>中文名</th><th>优先级</th></tr></thead><tbody><tr><td>system</td><td>系统级别</td><td>低</td></tr><tr><td>global</td><td>全局级别（用户级别）</td><td>中</td></tr><tr><td>local</td><td>仓库级别</td><td>高</td></tr></tbody></table><p>查看配置的命令：</p><p><code>git config -local -l</code>：查看仓库级的配置</p><p><code>git config -global -l</code>：查看全局（用户）级的配置</p><p><code>git config -system -l</code>：查看系统级的配置</p><p><code>git config -l</code>：查看当前path下生效的配置</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Git配置代理</title>
+      <link href="/article/768508d9.html"/>
+      <url>/article/768508d9.html</url>
+      
+        <content type="html"><![CDATA[<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 设置github的代理 http&amp;https协议</span><span class="token function">git</span> config <span class="token parameter variable">--global</span> http.https://github.com.proxy http://127.0.0.1:7890<span class="token function">git</span> config <span class="token parameter variable">--global</span> https.https://github.com.proxy https://127.0.0.1:7890<span class="token comment"># 取消github的代理</span><span class="token function">git</span> config <span class="token parameter variable">--global</span> <span class="token parameter variable">--unset</span> http.https://github.com.proxy<span class="token function">git</span> config <span class="token parameter variable">--global</span> <span class="token parameter variable">--unset</span> https.https://github.com.proxy<span class="token comment"># 设置全局代理 http&amp;https协议</span><span class="token function">git</span> config <span class="token parameter variable">--global</span> http.proxy http://127.0.0.1:7890<span class="token function">git</span> config <span class="token parameter variable">--global</span> https.proxy https://127.0.0.1:7890<span class="token comment"># 取消全局代理</span><span class="token function">git</span> config <span class="token parameter variable">--global</span> <span class="token parameter variable">--unset</span> http.proxy<span class="token function">git</span> config <span class="token parameter variable">--global</span> <span class="token parameter variable">--unset</span> https.proxy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu系统常用命令合集</title>
+      <link href="/article/10d2161e.html"/>
+      <url>/article/10d2161e.html</url>
+      
+        <content type="html"><![CDATA[<p><strong><u><em>网络相关</em></u></strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看指定端口占用情况</span><span class="token function">netstat</span> <span class="token parameter variable">-apn</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">2700</span><span class="token comment"># 禁用启用网卡</span><span class="token function">sudo</span> <span class="token function">ip</span> <span class="token function">link</span> <span class="token builtin class-name">set</span> enp129s0f1 down/up<span class="token comment"># 重启网络</span><span class="token function">sudo</span> <span class="token function">service</span> network-manager restart<span class="token comment"># 查看路由表</span>route<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><u><em>系统版本查看</em></u></strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看系统版本</span><span class="token function">uname</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong><u><em>CPU &amp; GPU相关</em></u></strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># CPU信息</span><span class="token function">cat</span> /proc/cpuinfo    <span class="token comment"># 如果cpu cores数量和siblings数量一致，则没有启用超线程，否则超线程被启用。</span><span class="token function">cat</span> /proc/cpuinfo <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"physical id"</span><span class="token operator">|</span> <span class="token function">sort</span><span class="token operator">|</span> <span class="token function">uniq</span><span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span> <span class="token comment"># 查看物理CPU个数</span><span class="token function">cat</span> /proc/cpuinfo <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"cpu cores"</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token comment"># 查看cpu核心数</span><span class="token function">cat</span> /proc/cpuinfo <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'model name'</span> <span class="token operator">|</span><span class="token function">uniq</span> <span class="token comment"># 查看cpu型号</span><span class="token comment"># GPU信息</span>nvidia-smi <span class="token comment"># gpu列表信息</span>nvidia-settings <span class="token comment"># 显示显卡信息</span><span class="token function">watch</span> <span class="token parameter variable">-n</span> <span class="token number">5</span> nvidia-smi <span class="token comment"># 查看显卡实时信息</span>lshw <span class="token parameter variable">-c</span> video <span class="token comment"># 显示显卡型号</span>lspci <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> nvidia <span class="token comment"># 得到NVIDIA显卡的信息</span><span class="token comment"># 硬件温度</span><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> lm-sensorssensors <span class="token comment"># 单次查看</span><span class="token function">watch</span> sensors <span class="token comment"># 实时查看</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><u><em>内存磁盘相关</em></u></strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 内存</span><span class="token function">free</span> <span class="token parameter variable">-h</span> <span class="token comment"># 查看内存状况</span><span class="token comment"># 磁盘</span><span class="token function">df</span> <span class="token parameter variable">-h</span> <span class="token comment"># 整体磁盘使用情况</span>lsblk <span class="token parameter variable">-f</span> <span class="token comment"># 查看系统分区及挂载情况</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong><u><em>访问github</em></u></strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查找以下三个域名的ip地址</span>github.comassets-cdn.github.comgithub.global.ssl.fastly.net<span class="token comment"># 在终端中输入 sudo vim /etc/hosts</span>i插入将ip和dns复制到文件中esc:wq保存退出<span class="token function">sudo</span> <span class="token function">service</span> network-manager restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何准备学术Presentation</title>
+      <link href="/article/c3012411.html"/>
+      <url>/article/c3012411.html</url>
+      
+        <content type="html"><![CDATA[<p>教学原地址：</p><p><a href="https://www.bilibili.com/video/BV1WF411Y73C/?spm_id_from=333.788.recommend_more_video.-1&amp;vd_source=9b511b52d056fb21c406621247aed854">https://www.bilibili.com/video/BV1WF411Y73C/?spm_id_from=333.788.recommend_more_video.-1&amp;vd_source=9b511b52d056fb21c406621247aed854</a></p><h1 id="PowerPoint-basics"><a href="#PowerPoint-basics" class="headerlink" title="PowerPoint basics"></a>PowerPoint basics</h1><ol><li><p>what font to use </p><ul><li><p>font <code>学术演讲应该用无衬线字体(san serif fonts)，而印刷书籍应该还用有衬线字体</code></p><ul><li><p>Arial</p></li><li><p>Comic sans</p></li><li><p>Trebuchet</p></li></ul></li><li><p>font size</p><ul><li><p>between 18 and 36</p></li><li><p>paper reference  → 14</p></li></ul></li><li><p>tips</p><ul><li>avoid capitalizing everything（不要把单词的每个字母都大写）</li></ul></li></ul></li><li><p>color</p><ul><li><p>it is better with a plain white background  and dark letters, either black or blue.</p></li><li><p>Streamline it down to as simple as possible and think about the contrast of letters.</p></li><li><p>a dark blue or black background works best for talks in a large room. </p></li><li><p>dark letters against a light background are best for smaller rooms or teaching</p></li></ul></li><li><p>layout</p><ul><li><p>Every slide should have a heading. The best heading is a simple senetence.</p></li><li><p>Limit text blocks to no more than two lines each.( 引用经典语句除外 )</p></li><li><p>Lists should be short, try to limit your lists to just three items. Avoid like mad long lists</p></li><li><p>Unveil your list one at a time. Use animation to unveil your list one by one.</p></li><li><p>Be very generous in a slide with empty space.</p></li><li><p>Try your best to include a simple image on every slide.</p></li><li><p>Limit the number of items on each slide. Each slide should make just on or two points. </p></li><li><p>Simple rule: If you’re not going to take the time to explain it ,get rid of it.</p></li><li><p>Avoid fancy transitions between slides unless you have a good reason.</p></li><li><p>Don’t drown the audience with data. Less is more. Just the data that you need to convince the audience of the credibility of your science.</p></li></ul></li></ol><h1 id="How-to-structure-a-good-talk"><a href="#How-to-structure-a-good-talk" class="headerlink" title="How to structure a good talk"></a>How to structure a good talk</h1><ol><li><p>The structure of a good talk: start broad, get specific, end broad.</p></li><li><p>Use a “home slide” at each major trasition in your talk.</p></li></ol><h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><p><a href="https://www.bilibili.com/video/BV12Y4y1k75i/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b511b52d056fb21c406621247aed854">https://www.bilibili.com/video/BV12Y4y1k75i/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b511b52d056fb21c406621247aed854</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> presentation </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
